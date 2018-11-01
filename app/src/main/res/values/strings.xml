@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">PhotoEditor</string>
+    <string name="saved_successfully">Saved Successfully</string>
+    <string name="rate">Rate</string>
+    <string name="share">Share</string>
+    <string name="more_apps">More apps</string>
+</resources>
