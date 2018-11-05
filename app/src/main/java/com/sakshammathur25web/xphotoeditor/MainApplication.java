@@ -1,4 +1,4 @@
-package com.sakshammathur25web.photoeditor;
+package com.sakshammathur25web.xphotoeditor;
 
 import android.support.multidex.MultiDexApplication;
 

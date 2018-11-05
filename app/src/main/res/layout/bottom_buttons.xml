@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
     xmlns:fancy="http://schemas.android.com/apk/res-auto"
-    android:layout_weight="1">
+    android:layout_weight="1"
+    tools:context=".ui.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,6 +20,7 @@
             android:layout_height="130dp"
             android:id="@+id/camera"
             android:layout_weight="1"
+            android:onClick="camera"
             fancy:fb_borderWidth="2dp"
             fancy:fb_defaultColor="#6591f5"
             fancy:fb_iconPaddingLeft="0dp"
@@ -24,14 +28,17 @@
             fancy:fb_iconPosition="top"
             fancy:fb_iconResource="@drawable/ic_camera"
             fancy:fb_text="CAMERA"
-            fancy:fb_textColor="#fff"/>
+            fancy:fb_textColor="#fff"
+            tools:ignore="OnClick" />
         <mehdi.sakout.fancybuttons.FancyButton
+            android:id="@+id/gallery"
             android:layout_width="0dp"
             android:layout_height="130dp"
             android:layout_weight="1"
             android:layout_margin="3dp"
             fancy:fb_borderWidth="2dp"
             fancy:fb_defaultColor="#f9c94f"
+            android:onClick="gallery"
             fancy:fb_iconPaddingLeft="0dp"
             fancy:fb_iconPaddingRight="0dp"
             fancy:fb_iconPosition="top"
@@ -50,6 +57,7 @@
             android:id="@+id/more"
             fancy:fb_borderWidth="2dp"
             android:layout_margin="3dp"
+            android:onClick="more"
             fancy:fb_defaultColor="#f94ceb"
             fancy:fb_iconPaddingLeft="0dp"
             fancy:fb_iconPaddingRight="0dp"

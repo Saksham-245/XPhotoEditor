@@ -1,0 +1,43 @@
+{
+  "project_info": {
+    "project_number": "656168851646",
+    "firebase_url": "https://x-photo-editor-3a352.firebaseio.com",
+    "project_id": "x-photo-editor-3a352",
+    "storage_bucket": "x-photo-editor-3a352.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:656168851646:android:69e323a284584e8d",
+        "android_client_info": {
+          "package_name": "com.sakshammathur25web.xphotoeditor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "656168851646-4loipnr3rqb8ge4ldvh5h8fbuct4l72i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuAZaAi0Xy4WP6c9QbGG3p3eoAQPiUQSs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      },
+      "admob_app_id": "ca-app-pub-7064584830603128~3599448099"
+    }
+  ],
+  "configuration_version": "1"
+}

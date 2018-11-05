@@ -1,4 +1,4 @@
-package com.sakshammathur25web.photoeditor;
+package com.sakshammathur25web.xphotoeditor;
 
 public class Constants {
 

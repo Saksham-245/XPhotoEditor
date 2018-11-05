@@ -1,4 +1,4 @@
-package com.sakshammathur25web.photoeditor.ui;
+package com.sakshammathur25web.xphotoeditor.ui;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -6,18 +6,16 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.adobe.creativesdk.aviary.AdobeImageIntent;
 import com.adobe.creativesdk.aviary.internal.headless.utils.MegaPixels;
-import com.sakshammathur25web.photoeditor.Constants;
-import com.sakshammathur25web.photoeditor.R;
-import com.sakshammathur25web.photoeditor.Utils;
-
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+import com.sakshammathur25web.xphotoeditor.Constants;
+import com.sakshammathur25web.xphotoeditor.R;
+import com.sakshammathur25web.xphotoeditor.Utils;
 
 public class EditorActivity extends AppCompatActivity {
     Uri editedImageUri;
@@ -29,7 +27,6 @@ public class EditorActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_editor);
-        ButterKnife.bind(this);
 
         try {
             mMediaUri = getIntent().getData();
@@ -66,8 +63,7 @@ public class EditorActivity extends AppCompatActivity {
         }
     }
 
-    @OnClick(R.id.sharePic)
-    public void shareImage(){
+    public void shareImage(View view){
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("*image/*");
         intent.putExtra(Intent.EXTRA_STREAM,editedImageUri);
