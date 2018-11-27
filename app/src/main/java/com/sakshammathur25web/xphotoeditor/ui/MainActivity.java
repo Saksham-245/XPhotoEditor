@@ -1,6 +1,7 @@
 package com.sakshammathur25web.xphotoeditor.ui;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -13,8 +14,6 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.cocosw.bottomsheet.BottomSheet;
@@ -23,6 +22,7 @@ import com.mlsdev.rximagepicker.Sources;
 import com.sakshammathur25web.xphotoeditor.BuildConfig;
 import com.sakshammathur25web.xphotoeditor.Constants;
 import com.sakshammathur25web.xphotoeditor.R;
+
 import io.reactivex.functions.Consumer;
 
 public class MainActivity extends AppCompatActivity {
@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("CheckResult")
     private void openCamera() {
         RxImagePicker.with(this).requestImage(Sources.CAMERA).subscribe(new Consumer<Uri>() {
             @Override
@@ -191,12 +192,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.rate:
                         rate();
                         break;
-                    case R.id.share:
-                        share();
-                        break;
-                    case R.id.more:
-                        moreApp(MainActivity.this);
-                        break;
+
                 }
             }
         }).show();

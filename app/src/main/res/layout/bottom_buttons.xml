@@ -16,9 +16,9 @@
         android:gravity="center">
 
         <mehdi.sakout.fancybuttons.FancyButton
-            android:layout_width="0dp"
-            android:layout_height="130dp"
             android:id="@+id/camera"
+            android:layout_width="8dp"
+            android:layout_height="130dp"
             android:layout_weight="1"
             android:onClick="camera"
             fancy:fb_borderWidth="2dp"
@@ -51,18 +51,19 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center">
+
         <mehdi.sakout.fancybuttons.FancyButton
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
             android:id="@+id/more"
-            fancy:fb_borderWidth="2dp"
+            android:layout_width="384dp"
+            android:layout_height="120dp"
             android:layout_margin="3dp"
             android:onClick="more"
+            fancy:fb_borderWidth="2dp"
             fancy:fb_defaultColor="#f94ceb"
             fancy:fb_iconPaddingLeft="0dp"
             fancy:fb_iconPaddingRight="0dp"
             fancy:fb_iconPosition="top"
             fancy:fb_text="MORE"
-            fancy:fb_textColor="#fff"/>
+            fancy:fb_textColor="#fff" />
     </LinearLayout>
 </LinearLayout>

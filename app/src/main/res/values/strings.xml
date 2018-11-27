@@ -5,4 +5,7 @@
     <string name="share">Share</string>
     <string name="dev_name">Saksham Mathur</string>
     <string name="more_apps">More apps</string>
+    <string name="gallery">Gallery</string>
+    <string name="delete">Delete</string>
+    <string name="save">Save</string>
 </resources>
