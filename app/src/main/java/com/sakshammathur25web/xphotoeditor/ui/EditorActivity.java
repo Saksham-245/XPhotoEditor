@@ -13,9 +13,6 @@ import android.widget.Toast;
 
 import com.adobe.creativesdk.aviary.AdobeImageIntent;
 import com.adobe.creativesdk.aviary.internal.headless.utils.MegaPixels;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
 import com.sakshammathur25web.xphotoeditor.Constants;
 import com.sakshammathur25web.xphotoeditor.R;
 import com.sakshammathur25web.xphotoeditor.Utils;
@@ -26,8 +23,6 @@ import java.util.Objects;
 public class EditorActivity extends AppCompatActivity {
     Uri editedImageUri;
     protected Uri mMediaUri;
-
-    InterstitialAd interstitialAd;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,24 +45,7 @@ public class EditorActivity extends AppCompatActivity {
                 .withOutputSize(MegaPixels.Mp30)
                 .build();
         startActivityForResult(imageEditorIntent, 1);
-
-        interstitialAd = new InterstitialAd(this);
-        interstitialAd.setAdUnitId("ca-app-pub-7130236073285421/4525001001");
-
-        AdRequest adRequest = new AdRequest.Builder().build();
-        interstitialAd.loadAd(adRequest);
-        interstitialAd.setAdListener(new AdListener(){
-            @Override
-            public void onAdLoaded() {
-                showInterstitial();
-            }
-        });
-    }
-
-    private void showInterstitial() {
-        if (interstitialAd.isLoaded()){
-            interstitialAd.show();
-        }
+        com.sakshammathur25web.xphotoeditor.Runable.run(this);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)

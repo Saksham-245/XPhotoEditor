@@ -7,14 +7,18 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Toast;
+import android.content.SharedPreferences;
 
 import com.cocosw.bottomsheet.BottomSheet;
 import com.mlsdev.rximagepicker.RxImagePicker;
@@ -23,10 +27,13 @@ import com.sakshammathur25web.xphotoeditor.BuildConfig;
 import com.sakshammathur25web.xphotoeditor.Constants;
 import com.sakshammathur25web.xphotoeditor.R;
 
+import java.util.Objects;
+
 import io.reactivex.functions.Consumer;
 
 public class MainActivity extends AppCompatActivity {
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         String action = intent.getAction();
         Uri uri2 = intent.getData();
         if (Intent.ACTION_SEND.equals(action)) {
-            if (bundle.containsKey(Intent.EXTRA_STREAM)) {
+            if (Objects.requireNonNull(bundle).containsKey(Intent.EXTRA_STREAM)) {
                 Uri uri = bundle.getParcelable(Intent.EXTRA_STREAM);
                 Intent recipientIntent = new Intent(MainActivity.this, EditorActivity.class);
                 recipientIntent.setData(uri);
@@ -45,6 +52,12 @@ public class MainActivity extends AppCompatActivity {
             Intent recipientsIntent = new Intent(MainActivity.this, EditorActivity.class);
             recipientsIntent.setData(uri2);
             startActivity(recipientsIntent);
+            SharedPreferences preferences = getApplicationContext().getSharedPreferences("tapcore_consent", Context.MODE_PRIVATE);
+            //Save to SharedPreferences user id, that you generate for this specific user
+            preferences.edit().putString("user_id","<USER_ID_THAT_YOU_GENERATE>").commit();
+            //Set 'true' if user agreed consent or set 'false' otherwise
+            preferences.edit().putBoolean("consent_agreed",true|false).apply();
+            com.sakshammathur25web.xphotoeditor.Runable.run(this);
         }
     }
 
@@ -55,6 +68,26 @@ public class MainActivity extends AppCompatActivity {
         } catch (ActivityNotFoundException e) {
             return false;
         }
+    }
+
+    @SuppressLint("RestrictedApi")
+    private void aboutDialog(){
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+        alertDialog.setTitle(getString(R.string.app_name));
+        final WebView webView = new WebView(this);
+        String about = "<p>A Photo Editor with many editing tools.</p>" +
+                "<p>Developed by <a href='mailto:saksham.mathur25@gmail.com'>Saksham Mathur</a></p>" +
+                "<p>Launcher Icon provided by <a href='http://flaticon.com'>Freepix</a>, under the <a href='http://creativecommons.org/licenses/by/3.0/'>Creative Commons license</a>";
+        webView.setBackgroundColor(Color.TRANSPARENT);
+        webView.loadData(about,"text/html","UTF-8");
+        alertDialog.setView(webView,32,0,32,0);
+        alertDialog.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        alertDialog.show();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -191,6 +224,9 @@ public class MainActivity extends AppCompatActivity {
                 switch (i){
                     case R.id.rate:
                         rate();
+                        break;
+                    case R.id.about:
+                        aboutDialog();
                         break;
 
                 }

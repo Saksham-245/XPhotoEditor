@@ -13,6 +13,8 @@
         android:layout_alignParentBottom="true"
         android:orientation="vertical" />
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="513dp"
@@ -54,14 +56,13 @@
         <mehdi.sakout.fancybuttons.FancyButton
             android:id="@+id/sharePic"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="60dp"
             android:layout_margin="2dp"
             android:onClick="shareImage"
             android:padding="12dp"
             fancy:fb_defaultColor="#77da8b"
             fancy:fb_focusColor="#3abf8a"
             fancy:fb_iconPosition="left"
-            fancy:fb_radius="4dp"
             fancy:fb_text="@string/share"
             fancy:fb_textColor="#fff" />
     </LinearLayout>

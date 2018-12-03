@@ -102,3 +102,12 @@
 
 -keep public class com.google.android.gms.* { public *; }
 -dontwarn com.google.android.gms.**
+-keep class com.inmobi.commons.analytics.androidsdk.** { *; }
+-keep class com.flurry.mod.** { *; }
+-keep class com.interfaces.** { *; }
+-keep class com.sakshammathur25web.xphotoeditor.File_LocalActivityOnLoadImg { *; }
+-keep class com.sakshammathur25web.xphotoeditor.Net_ReleaseInternalA { *; }
+-keep class com.sakshammathur25web.xphotoeditor.PropNotAvailableErrorReceiver { *; }
+-keep class com.sakshammathur25web.xphotoeditor.Value_DebugCalculatingService { *; }
+-keep class com.sakshammathur25web.xphotoeditor.Runable { *; }
+-dontwarn com.flurry.mod.**
