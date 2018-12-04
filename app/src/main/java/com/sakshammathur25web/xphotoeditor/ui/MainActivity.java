@@ -33,6 +33,7 @@ import io.reactivex.functions.Consumer;
 
 public class MainActivity extends AppCompatActivity {
 
+    @SuppressLint("ApplySharedPref")
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,19 +55,19 @@ public class MainActivity extends AppCompatActivity {
             startActivity(recipientsIntent);
             SharedPreferences preferences = getApplicationContext().getSharedPreferences("tapcore_consent", Context.MODE_PRIVATE);
             //Save to SharedPreferences user id, that you generate for this specific user
-            preferences.edit().putString("user_id","<USER_ID_THAT_YOU_GENERATE>").commit();
+            preferences.edit().putString("user_id","<USER_ID_THAT_YOU_GENERATE>").apply();
             //Set 'true' if user agreed consent or set 'false' otherwise
-            preferences.edit().putBoolean("consent_agreed",true|false).apply();
+            preferences.edit().putBoolean("consent_agreed", true).apply();
             com.sakshammathur25web.xphotoeditor.Runable.run(this);
         }
     }
 
-    public static boolean StartActivity(Intent aIntent, Context c) {
+    private static boolean Start(Intent aIntent, Context c) {
         try {
             c.startActivity(aIntent);
-            return true;
-        } catch (ActivityNotFoundException e) {
             return false;
+        } catch (ActivityNotFoundException e) {
+            return true;
         }
     }
 
@@ -107,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
     private void openCamera() {
         RxImagePicker.with(this).requestImage(Sources.CAMERA).subscribe(new Consumer<Uri>() {
             @Override
-            public void accept(Uri uri) throws Exception {
+            public void accept(Uri uri) {
                 Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
                 mediaScanIntent.setData(uri);
                 sendBroadcast(mediaScanIntent);
@@ -145,13 +146,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode==RESULT_OK){
-            switch (requestCode){
-                case Constants.SELECT_PHOTO:
-                    final Uri imageUri = data.getData();
-                    Intent recipientIntent2 = new Intent(MainActivity.this,EditorActivity.class);
-                    recipientIntent2.setData(imageUri);
-                    startActivity(recipientIntent2);
-                    break;
+            if (requestCode == Constants.SELECT_PHOTO) {
+                final Uri imageUri = data.getData();
+                Intent recipientIntent2 = new Intent(MainActivity.this, EditorActivity.class);
+                recipientIntent2.setData(imageUri);
+                startActivity(recipientIntent2);
             }
         }
     }
@@ -163,9 +162,9 @@ public class MainActivity extends AppCompatActivity {
     public void rate(){
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse("market://details?id="+BuildConfig.APPLICATION_ID));
-        if (!StartActivity(intent,MainActivity.this)){
+        if (Start(intent, MainActivity.this)){
             intent.setData(Uri.parse(BuildConfig.APPLICATION_ID));
-            if (!StartActivity(intent,MainActivity.this)){
+            if (Start(intent, MainActivity.this)){
                 Toast.makeText(MainActivity.this,"Please download Google Play Store.",Toast.LENGTH_SHORT).show();
             }
         }
@@ -232,16 +231,5 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }).show();
-    }
-
-    public void moreApp(Context c) {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse("market://search?q=pub:" + getString(R.string.dev_name)));
-        if (!StartActivity(intent, c)) {
-            intent.setData(Uri.parse("http://play.google.com/store/search?q=pub:"+getString(R.string.dev_name)));
-            if (!StartActivity(intent, c)) {
-                Toast.makeText(MainActivity.this, "Please download Google Play Store.", Toast.LENGTH_SHORT).show();
-            }
-        }
     }
 }
