@@ -19,10 +19,8 @@ public class Utils {
             String appName = c.getString(R.string.app_name);
             File mediaStorageDir = new File(Environment.getExternalStorageDirectory(),appName+"/"+filePath);
             //2. Create our subdirectory
-            if (!mediaStorageDir.exists()){
-                if (!mediaStorageDir.mkdirs()){
-                    return null;
-                }
+            if (!mediaStorageDir.exists()) {
+                mediaStorageDir.mkdirs();
             }
             //3. Create a file name
             //4. Create the file
