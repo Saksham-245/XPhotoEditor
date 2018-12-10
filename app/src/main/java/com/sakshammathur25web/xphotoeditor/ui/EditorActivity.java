@@ -56,6 +56,7 @@ public class EditorActivity extends AppCompatActivity {
                 case 1:
                     editedImageUri = Objects.requireNonNull(data).getParcelableExtra(AdobeImageIntent.EXTRA_OUTPUT_URI);
                     Toast.makeText(this, "Saved to /sdcard/" + getString(R.string.app_name), Toast.LENGTH_SHORT).show();
+                    default:
                     break;
             }
         } else {
