@@ -221,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.about:
                         aboutDialog();
                         break;
-
+                        default:
                 }
             }
         }).show();
