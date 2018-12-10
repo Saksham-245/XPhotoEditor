@@ -21,7 +21,7 @@ import java.util.Objects;
 
 
 public class EditorActivity extends AppCompatActivity {
-    Uri editedImageUri;
+    private Uri editedImageUri;
     protected Uri mMediaUri;
 
     @Override
@@ -57,7 +57,6 @@ public class EditorActivity extends AppCompatActivity {
                     editedImageUri = Objects.requireNonNull(data).getParcelableExtra(AdobeImageIntent.EXTRA_OUTPUT_URI);
                     Toast.makeText(this, "Saved to /sdcard/" + getString(R.string.app_name), Toast.LENGTH_SHORT).show();
                     default:
-                    break;
             }
         } else {
             Intent intent = new Intent(this, MainActivity.class);

@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode==RESULT_OK){
+        if (resultCode == RESULT_OK){
             if (requestCode == Constants.SELECT_PHOTO) {
                 final Uri imageUri = data.getData();
                 Intent recipientIntent2 = new Intent(MainActivity.this, EditorActivity.class);

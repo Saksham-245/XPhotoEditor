@@ -46,12 +46,8 @@ public class Utils {
         }
     }
 
-    public static boolean isExternalStorageIsAvailable() {
+    private static boolean isExternalStorageIsAvailable() {
         String state = Environment.getExternalStorageState();
-        if (state.equals(Environment.MEDIA_MOUNTED)) {
-            return true;
-        } else {
-            return false;
-        }
+        return state.equals(Environment.MEDIA_MOUNTED);
     }
 }
