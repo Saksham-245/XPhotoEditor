@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private static boolean Start(Intent aIntent, Context c) {
+    private static boolean start(Intent aIntent, Context c) {
         try {
             c.startActivity(aIntent);
             return false;
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @SuppressLint("RestrictedApi")
-    private void aboutDialog(){
+    private void aboutDialog() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
         alertDialog.setTitle(getString(R.string.app_name));
         final WebView webView = new WebView(this);
@@ -80,15 +80,8 @@ public class MainActivity extends AppCompatActivity {
                 "<p>Developed by <a href='mailto:saksham.mathur25@gmail.com'>Saksham Mathur</a></p>" +
                 "<p>Launcher Icon provided by <a href='http://flaticon.com'>Freepix</a>, under the <a href='http://creativecommons.org/licenses/by/3.0/'>Creative Commons license</a>";
         webView.setBackgroundColor(Color.TRANSPARENT);
-        webView.loadData(about,"text/html","UTF-8");
-        alertDialog.setView(webView,32,0,32,0);
-        alertDialog.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-            }
-        });
-        alertDialog.show();
+        webView.loadData(about, "text/html", "UTF-8");
+        alertDialog.setView(webView, 32, 0, 32, 0);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -162,9 +155,9 @@ public class MainActivity extends AppCompatActivity {
     public void rate(){
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse("market://details?id="+BuildConfig.APPLICATION_ID));
-        if (Start(intent, MainActivity.this)){
+        if (start(intent, MainActivity.this)){
             intent.setData(Uri.parse(BuildConfig.APPLICATION_ID));
-            if (Start(intent, MainActivity.this)){
+            if (start(intent, MainActivity.this)){
                 Toast.makeText(MainActivity.this,"Please download Google Play Store.",Toast.LENGTH_SHORT).show();
             }
         }
