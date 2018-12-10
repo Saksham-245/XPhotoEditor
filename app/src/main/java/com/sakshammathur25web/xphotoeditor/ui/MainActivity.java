@@ -118,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
             case Constants.REQUEST_WRITE_STORAGE_PERMISSION:
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     launchGallery();
+                    break;
                 } else {
                     Toast.makeText(MainActivity.this, "You need to allow Storage permission first", Toast.LENGTH_SHORT).show();
                 }
