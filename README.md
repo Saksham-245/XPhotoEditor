@@ -1,0 +1,2 @@
+# XPhotoEditor
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/94c04f53c5484db58f5a8848f75b44fc)](https://app.codacy.com/app/Saksham-245/XPhotoEditor?utm_source=github.com&utm_medium=referral&utm_content=Saksham-245/XPhotoEditor&utm_campaign=Badge_Grade_Dashboard)
