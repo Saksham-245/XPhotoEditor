@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
         webView.setBackgroundColor(Color.TRANSPARENT);
         webView.loadData(about, "text/html", "UTF-8");
         alertDialog.setView(webView, 32, 0, 32, 0);
+        alertDialog.show();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
